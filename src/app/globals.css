@@ -24,3 +24,110 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 600ms ease forwards;
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+
+  /* start slightly right */
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+.animate-slide-left {
+  animation: slideLeft 320ms ease-out both;
+}
+
+@keyframes planeFly {
+  0% {
+    transform: translateX(-120px) translateY(0) rotate(45deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(120vw) translateY(-40px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.animate-plane-fly {
+  animation: planeFly 8s linear infinite;
+}
+
+/* ---- Coverage plane animation ---- */
+.coverage-plane .plane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Same path as the SVG above */
+  offset-path: path("M100 480 C 220 430, 360 380, 480 320 S 720 260, 840 200");
+  offset-rotate: auto;
+  /* turn as it flies */
+  animation: fly-across 9s linear infinite;
+}
+
+/* fade in/out and move along the path */
+@keyframes fly-across {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes statFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
